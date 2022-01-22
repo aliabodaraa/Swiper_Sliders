@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Swiper demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <!-- Link Swiper's CSS -->
+    <!--Gettind Swipper 4-->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" data-auto-replace-svg="nest"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            overflow-wrap: break-word;
+        }
+        /* 745 */
+        
+         :root {
+            --color1: linear-gradient(147deg, #f8f8f8 0%, #f6b487 74%);
+            --color2: linear-gradient(296deg, #178aa2 0%, #a3a87d05 149%);
+            --color3: linear-gradient(180deg, #1276a3 0%, rgb(222 171 171) 140%);
+            --color4: linear-gradient(179deg, #ffcb40 0%, #fc4d17 66%);
+        }
+        /* body {
+            background-color: #745;
+            transition: 2s;
+        } */
+        
+        body {
+            /* min-height: 100vh; */
+            font-family: 'Fira Sans', sans-serif;
+        }
+        /* ................................................ swiper gallery .......................................................... */
+        
+        .container1Info1 {
+            overflow: hidden;
+            height: 590px;
+            background-image: var(--color1);
+            /* background-image: linear-gradient(147deg, #fe8a39 0%, #fd3838 74%); aloshe*/
+        }
+        
+        .container1Info2 {
+            height: 570px;
+            background-image: var(--color2);
+            /* background-image: linear-gradient(147deg, #fe8a39 0%, #fd3838 74%); */
+        }
+        
+        .container1Info3 {
+            height: 570px;
+            background-image: var(--color3);
+            /* background-image: linear-gradient(147deg, #fe8a39 0%, #fd3838 74%); */
+        }
+        
+        .container1Info4 {
+            height: 570px;
+            background-image: var(--color4);
+            /* background-image: linear-gradient(147deg, #fe8a39 0%, #fd3838 74%); */
+        }
+        
+        .container2Info {
+            margin-top: 14px;
+            margin-bottom: 80px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 443px;
+            width: 1200px;
+            background-color: rgb(255, 255, 255);
+            /* background-color: #e23c09; */
+            border-radius: 10px;
+        }
+        
+        .textBehindEachPhoto {
+            float: left;
+            width: 35%;
+            height: 425px;
+            /* padding-left: 8px;   */
+        }
+        
+        .swiper-container-3d {
+            perspective: 9990px;
+        }
+        
+        .swiper-container {
+            margin-bottom: -5px;
+        }
+        
+        .swiper-wrapper {
+            float: right;
+            width: 100%;
+            min-width: auto;
+            height: auto;
+            /* margin: auto; */
+            padding-top: 0px;
+        }
+        
+        .swiper-slide-img {
+            /* for big photo */
+            height: auto;
+            width: 100%;
+            /* border: 1px solid black; */
+            /* move next and prev buttons off img */
+        }
+        
+        .swiper-slide {
+            padding: 3px 4px 0px 2px;
+            width: 86.9524px;
+            /* for solve hide photos */
+        }
+        
+        .swiper-slide>img {
+            width: 65%;
+            border-radius: 10px;
+            /* border: 1px solid #fff; */
+        }
+        
+        .swiper-slide-img:hover {
+            cursor: pointer;
+        }
+        
+        .swiper-pagination {
+            background-color: #d8d8d8;
+            padding: 5px;
+        }
+        
+        .swiper-button-next:focus {
+            outline: none;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+        
+        .swiper-pagination1,
+        .swiper-pagination2,
+        .swiper-pagination3,
+        .swiper-pagination4 {
+            background: linear-gradient(to bottom right, white, #aaa);
+            border-radius: 0px;
+            margin-bottom: -8px;
+        }
+        /*active pagination*/
+        
+        .swiper-pagination .swiper-pagination-bullet-active {
+            background-color: blue;
+        }
+        /*other pagination*/
+        
+        .swiper-pagination .swiper-pagination-bullet {
+            height: 10px;
+            width: 10px;
+        }
+        
+        .swiper-pagination .swiper-pagination-bullet:hover {
+            transform: scale(1.5);
+            transition: all 0.5s;
+        }
+        
+        .swiper-pagination .swiper-pagination-bullet:focus {
+            outline: none;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+        /* Span */
+        
+        .jumbotron {
+            background-color: white;
+            padding-right: 0;
+            padding-left: 0;
+        }
+        
+        span {
+            display: block;
+        }
+        
+        .jumbotron span:first-child {
+            transition: 2s;
+            /* added Above */
+            margin-top: -25px;
+            font-size: 24px;
+            line-height: 1.33;
+        }
+        
+        .jumbotron span:nth-child(2) {
+            padding-top: 8px;
+            line-height: 1.25;
+            font-size: 32px;
+            font-weight: 600;
+            /* padding-bottom: 15px; */
+            margin-bottom: 24px;
+        }
+        /*Button_______________________________________________________________________________________*/
+        
+        .btn-new {
+            transition: 2s;
+            /* added Above */
+            background-color: rgb(253, 98, 81);
+            display: inline-block;
+            margin-bottom: 0;
+            /* font-weight: bold; */
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            -ms-touch-action: manipulation;
+            touch-action: manipulation;
+            cursor: pointer;
+            background-image: none;
+            border: 1px solid transparent;
+            padding: 3px 9px;
+            font-size: 20px;
+            line-height: 2;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            border-radius: 33px;
+            padding-left: 35px;
+            padding-right: 35px;
+            color: white;
+            width: auto;
+        }
+        
+        .btn-new:hover {
+            background-color: rgb(255, 65, 44);
+        }
+        
+        .btn-new2 {
+            background-color: rgba(34, 31, 30, 0%);
+            display: inline-block;
+            margin-bottom: 0;
+            font-weight: bold;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            -ms-touch-action: manipulation;
+            touch-action: manipulation;
+            cursor: pointer;
+            background-image: none;
+            border: 1px solid transparent;
+            padding: 3px 9px;
+            font-size: 20px;
+            line-height: 1.5;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            border-radius: 33px;
+            padding-left: 35px;
+            padding-right: 35px;
+            color: white;
+            height: 43px;
+            width: auto;
+            margin-bottom: -2px;
+            margin-right: 5px;
+        }
+        /* .btn-new2:hover {
+            background-color: #3232;
+        } */
+        
+        .btn-new2:focus {
+            background-color: white;
+            color: black;
+        }
+        
+        li.active .btn-new2 {
+            background-color: white;
+            color: black;
+        }
+        
+        .textBehindEachPhoto h2 {
+            font-weight: 900;
+            line-height: 1.3;
+            margin-bottom: 20px
+        }
+        /* Icon */
+        
+        .svg-inline--fa.fa-w-10 {
+            display: none;
+            width: .625em;
+            bottom: -14px;
+            left: 61px;
+            position: absolute;
+        }
+        /*Pills_______________________________________________________________________________________________________________*/
+        
+        .nav-pills {
+            margin-top: 10px;
+            margin-left: 276px;
+            margin-bottom: -4px;
+        }
+        
+        .tab-content>.tab-pane {
+            width: 1200px;
+        }
+        
+        .nav-pills>li {
+            width: 150px;
+        }
+        
+        .gallery-thumbs1,
+        .gallery-thumbs2,
+        .gallery-thumbs3,
+        .gallery-thumbs4 {
+            position: relative;
+            bottom: -16px;
+            width: auto;
+            overflow: visible;
+            height: 49px;
+        }
+        
+        .swiper-button-prev {
+            position: absolute;
+            transform: translateX(-40%);
+        }
+        
+        .swiper-button-next {
+            position: absolute;
+            transform: translateX(40%);
+        }
+        
+        .swiper-button-next:after,
+        .swiper-button-prev:after {
+            display: none;
+        }
+        /* New Added */
+        
+        .button-next {
+            position: relative;
+        }
+        
+        .swiper-button-next,
+        .swiper-button-prev {
+            width: 110px;
+            overflow: hidden;
+            display: flex;
+            margin-left: -85px;
+            /* width: auto; */
+            background-color: rgba(153, 153, 153, 0.048);
+            border: 3px solid white;
+            height: 51px;
+            margin-top: -24px;
+            color: white;
+        }
+        
+        .swiper-button-next {
+            margin-right: 2px
+        }
+        
+        .swiper-button-next:hover,
+        .swiper-button-prev:hover {
+            background-color: #3232;
+        }
+        
+        .gallery-thumbs1 .swiper-slide,
+        .gallery-thumbs2 .swiper-slide,
+        .gallery-thumbs3 .swiper-slide,
+        .gallery-thumbs4 .swiper-slide {
+            /* opacity: 0.2; */
+            opacity: 1;
+            /* width: 86.9524px; */
+        }
+        
+        .gallery-thumbs1 .swiper-slide-thumb-active img,
+        .gallery-thumbs2 .swiper-slide-thumb-active img,
+        .gallery-thumbs3 .swiper-slide-thumb-active img,
+        .gallery-thumbs4 .swiper-slide-thumb-active img {
+            /* opacity: 1; */
+            border: 3px solid white;
+            border-radius: 10px;
+            /* border: 3px solid darkblue; */
+        }
+        
+        .gallery-thumbs1 .swiper-slide img,
+        .gallery-thumbs2 .swiper-slide img,
+        .gallery-thumbs3 .swiper-slide img,
+        .gallery-thumbs4 .swiper-slide img {
+            width: 100px;
+            display: inline-block;
+            height: 50px;
+            min-height: 40px;
+            object-fit: cover;
+        }
+        /* ............................................. responsiveness ....................................................... */
+        
+        @media all and (max-width: 520px) {
+            .swiper-container {
+                width: calc(100vw - 20px);
+            }
+            .swiper-button-next:after {
+                font-size: 20px !important;
+                transform: translateX(60%);
+            }
+            .swiper-button-prev:after {
+                font-size: 20px !important;
+                transform: translateX(-60%);
+            }
+            #swiper-button-next-modal {
+                font-size: 20px !important;
+                transform: translateX(20%);
+            }
+            #swiper-button-prev-modal {
+                font-size: 20px !important;
+                transform: translateX(-20%);
+            }
+            .swiper-pagination1,
+            .swiper-pagination2,
+            .swiper-pagination3,
+            .swiper-pagination4 {
+                padding: 4px;
+            }
+            .swiper-slide-img {
+                width: calc(100vw-32px);
+                height: auto;
+                border: 16px solid #d8d8d8;
+                /* move next and prev buttons off img */
+                min-height: calc((0.5338 * 100vw) + 48.476px);
+            }
+            .swiper-pagination1 .swiper-pagination-bullet,
+            .swiper-pagination2 .swiper-pagination-bullet,
+            .swiper-pagination3 .swiper-pagination-bullet,
+            .swiper-pagination4 .swiper-pagination-bullet {
+                height: 12px;
+                width: 12px;
+            }
+            .gallery-thumbs1 .swiper-slide img,
+            .gallery-thumbs2 .swiper-slide img,
+            .gallery-thumbs3 .swiper-slide img,
+            .gallery-thumbs4 .swiper-slide img {
+                height: 14vw;
+            }
+        }
+        /*START for button inside class textBehindEachPhoto _______________________________________*/
+        
+        .sf-hb-button-3mxAT {
+            position: relative;
+            display: block;
+            background-color: rgba(0, 0, 0, 0);
+            -webkit-transition-duration: .2s;
+            -o-transition-duration: .2s;
+            transition-duration: .2s;
+            -webkit-transition-property: opacity, background-color, color;
+            -o-transition-property: opacity, background-color, color;
+            transition-property: opacity, background-color, color;
+            -webkit-transition-timing-function: ease-out;
+            -o-transition-timing-function: ease-out;
+            transition-timing-function: ease-out
+        }
+        
+        .sf-hb-button-3mxAT .sf-hb-button-32HAC {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex
+        }
+        
+        .sf-hb-button-3mxAT .sf-hb-button-1bEW5 {
+            position: relative;
+            display: block
+        }
+        
+        .sf-hb-button-3mxAT .sf-hb-button-1bEW5+.sf-hb-button-2Z2Fd {
+            -webkit-box-flex: 0;
+            -ms-flex: 0 0 auto;
+            flex: 0 0 auto
+        }
+        
+        .sf-hb-button-3mxAT .sf-hb-button-2Bs_u {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            background-repeat: no-repeat;
+            background-position: 50%;
+            background-size: contain
+        }
+        
+        .sf-hb-button-3mxAT .sf-hb-button-1sDlT {
+            top: 0;
+            right: 0
+        }
+        
+        .sf-hb-button-3mxAT .sf-hb-button-237FV {
+            margin-left: auto;
+            margin-right: auto
+        }
+        
+        .sf-hb-button-3mxAT.sf-hb-button-z0zVf,
+        .sf-hb-button-3mxAT:disabled {
+            cursor: not-allowed
+        }
+        
+        .sf-hb-button-3mxAT:not(.sf-hb-button-1axFk).sf-hb-button-z0zVf,
+        .sf-hb-button-3mxAT:not(.sf-hb-button-1axFk):disabled {
+            opacity: .3
+        }
+        
+        .sf-hb-button-3mxAT.sf-hb-button-CbtX4 {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            text-decoration: none
+        }
+        
+        .sf-Share-O5q7O {
+            position: relative;
+            top: 12px;
+            left: 354px;
+        }
+        
+        .sf-Share-O5q7O .sf-Share-2YBgl {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            border-radius: 20px;
+            border: 1px solid #fff;
+            height: 46px;
+            width: 49px;
+        }
+        
+        .sf-Share-O5q7O .sf-Share-2YBgl:hover {
+            border-radius: 20px;
+            background-color: #eee;
+        }
+        
+        .sf-Share-O5q7O .sf-Share-2z71D {
+            background-repeat: no-repeat;
+            background-position: 50%;
+            background-size: contain;
+            background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='24' fill='none'%3E%3Cpath d='M14.25 8.25h1.5a1.5 1.5 0 011.5 1.5v12a1.5 1.5 0 01-1.5 1.5H2.25a1.5 1.5 0 01-1.5-1.5v-12a1.5 1.5 0 011.5-1.5h1.5M9 .75v10.5M5.25 4.5L9 .75l3.75 3.75' fill-rule='evenodd' stroke='%23484848' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5'/%3E%3C/svg%3E");
+            width: 39px;
+            height: 34px;
+        }
+        /*button-next for button inside class textBehindEachPhoto _______________________________________*/
+        /* .swiper-slide.swiper-slide-active img {
+            width: 70%;
+        }
+        
+        .swiper-slide img {
+            width: 0;
+            height: 0
+        } */
+    </style>
+
+</head>
+
+<body>
+    <div id="main" class="container1Info1">
+        <div class="container">
+            <ul class="nav nav-pills">
+                <li class="active show-icon"><button data-toggle="pill" data-target="#menu1" class="btn-new2">Menu
+                        1</button><i class="fa fa-caret-down" style="font-size:24px;color:white"></i></li>
+                <li><button data-toggle="pill" data-target="#menu2" class="btn-new2">Menu 2</button><i class="fa fa-caret-down" style="font-size:24px;color:white"></i></li>
+                <li><button data-toggle="pill" data-target="#menu3" class="btn-new2">Menu 3</button><i class="fa fa-caret-down" style="font-size:24px;color:white"></i></li>
+                <li><button data-toggle="pill" data-target="#menu4" class="btn-new2">Menu 4</button><i class="fa fa-caret-down" style="font-size:24px;color:white"></i></li>
+            </ul>
+            <!-- 1--------______________________________--------_____________________________-------_______________________________----- -->
+            <div class="tab-content">
+                <div id="menu1" class="tab-pane fade in active">
+                    <div class="container2Info">
+                        <!-- Swiper -->
+                        <div class="swiper-container swiper-container-main1">
+                            <div class="swiper-wrapper">
+
+                                <div class="swiper-slide minimum-height">
+                                    <div class="textBehindEachPhoto">
+                                        <!-- here -->
+                                        <div class="sf-Share-O5q7O">
+                                            <button type="button" class="sf-hb-button-3mxAT hb-button sf-Share-2YBgl" tabindex="0" data-hbus=""><span
+                                                    class="sf-hb-button-32HAC hb-button__content"><span
+                                                        class="sf-hb-button-1bEW5 hb-button__icon-container"><span
+                                                            class="sf-hb-button-2Bs_u sf-Share-2z71D hb-button__icon"></span></span></span></button>
+                                        </div>
+                                        <div class=" jumbotron text-center" style="padding-right:4px;padding-left:0;">
+                                            <span>Pet shop yilizli</span>
+                                            <span>98%'ye yilizli</span>
+                                            <button class="btn-new">yilizli</button>
+                                        </div>
+                                    </div>
+                                    <img src="https://images.hepsiburada.net/banners/s/0/672-378/bannerImage2090_20210212162619.png">
+                                </div>
+                                <div class="swiper-slide minimum-height">
+                                    <div class="textBehindEachPhoto">
+                                        <!-- here -->
+                                        <div class="sf-Share-O5q7O">
+                                            <button type="button" class="sf-hb-button-3mxAT hb-button sf-Share-2YBgl" tabindex="0" data-hbus=""><span
+                                                    class="sf-hb-button-32HAC hb-button__content"><span
+                                                        class="sf-hb-button-1bEW5 hb-button__icon-container"><span
+                                                            class="sf-hb-button-2Bs_u sf-Share-2z71D hb-button__icon"></span></span></span></button>
+                                        </div>
+                                        <div class=" jumbotron text-center" style="padding-right:4px;padding-left:0;">
+                                            <span>Pet shop indirimler</span>
+                                            <span>9%'ye varan
+                                                indirimlerdaddfaw ercomerce</span>
+                                            <button class="btn-new">dsddsss</button>
+                                        </div>
+                                    </div>
+                                    <img src="https://images.hepsiburada.net/banners/s/0/672-378/bannerImage2121_20210311083848.png">
+                                </div>
+
+
+                            </div>
+                            <!-- Add Pagination -->
+                            <!-- <div class="swiper-pagination"></div> -->
+                            <!-- Add Pagination -->
+                            <!-- <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div> -->
+                        </div>
+
+                        <!-- Swiper thumbnails -->
+                        <div class="swiper-container gallery-thumbs1">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-button-prev btn-new"><i style='font-size:24px' class='fas'>&#xf060;</i>
+                                </div>
+
+                                <div class="swiper-slide swiper-slide-thumbs">
+                                    <img src="https://images.hepsiburada.net/banners/s/0/672-378/bannerImage2090_20210212162619.png">
+                                </div>
+
+                                <div class="swiper-slide swiper-slide-thumbs">
+                                    <img src="https://images.hepsiburada.net/banners/s/0/672-378/bannerImage2121_20210311083848.png">
+                                </div>
+
+
+
+                                <div class="button-next">
+                                    <div class="swiper-slide swiper-slide-thumbs">
+                                        <!-- Empty -->
+                                    </div>
+                                    <button class="swiper-button-next btn-new">
+                                        <span style="display:none">Menu 2 </span>&nbsp;<i style='font-size:24px'
+                                            class='fas'>&#xf061;</i>
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- 2--------______________________________--------_____________________________-------_______________________________----- -->
+                <div id="menu2" class="tab-pane fade active">
+                    <div class="container2Info">
+
+                        <!-- Swiper -->
+                        <div class="swiper-container swiper-container-main2">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide minimum-height">
+                                    <div class="textBehindEachPhoto">
+                                        <!-- here -->
+                                        <div class="sf-Share-O5q7O">
+                                            <button type="button" class="sf-hb-button-3mxAT hb-button sf-Share-2YBgl" tabindex="0" data-hbus=""><span
+                                                    class="sf-hb-button-32HAC hb-button__content"><span
+                                                        class="sf-hb-button-1bEW5 hb-button__icon-container"><span
+                                                            class="sf-hb-button-2Bs_u sf-Share-2z71D hb-button__icon"></span></span></span></button>
+                                        </div>
+                                        <div class=" jumbotron text-center" style="padding-right:4px;padding-left:0;">
+                                            <span>Pet shop Booling</span>
+                                            <span>90%'ye varan Booling </span>
+                                            <button class="btn-new">Warning</button>
+                                        </div>
+                                    </div>
+                                    <img src="https://images.hepsiburada.net/banners/s/0/672-378/bannerImage2095_20210430170649.png">
+                                </div>
+
+
+
+                            </div>
+                            <!-- Add Pagination -->
+                            <!-- <div class="swiper-pagination"></div> -->
+                            <!-- Add Pagination -->
+                            <!-- <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div> -->
+                        </div>
+
+                        <!-- Swiper thumbnails -->
+                        <div class="swiper-container gallery-thumbs2">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-button-prev btn-new"><i style='font-size:24px' class='fas'>&#xf060;</i>&nbsp;<span style="display:none">Menu 1 </span>
+                                </div>
+                                <div class="swiper-slide swiper-slide-thumbs">
+                                    <img src="https://images.hepsiburada.net/banners/s/0/672-378/bannerImage2095_20210430170649.png">
+                                </div>
+
+                                <div class="button-next">
+                                    <div class="swiper-slide swiper-slide-thumbs">
+                                        <!-- Empty -->
+                                    </div>
+                                    <button class="swiper-button-next btn-new">
+                                        <span style="display:none">Menu 3 </span>&nbsp;<i style='font-size:24px'
+                                            class='fas'>&#xf061;</i>
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- 3--------______________________________--------_____________________________-------_______________________________----- -->
+                <div id="menu3" class="tab-pane fade active">
+                    <div class="container2Info">
+
+                        <!-- Swiper -->
+                        <div class="swiper-container swiper-container-main3">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide minimum-height">
+                                    <div class="textBehindEachPhoto">
+                                        <!-- here -->
+                                        <div class="sf-Share-O5q7O">
+                                            <button type="button" class="sf-hb-button-3mxAT hb-button sf-Share-2YBgl" tabindex="0" data-hbus=""><span
+                                                    class="sf-hb-button-32HAC hb-button__content"><span
+                                                        class="sf-hb-button-1bEW5 hb-button__icon-container"><span
+                                                            class="sf-hb-button-2Bs_u sf-Share-2z71D hb-button__icon"></span></span></span></button>
+                                        </div>
+                                        <div class=" jumbotron text-center" style="padding-right:4px;padding-left:0;">
+                                            <span>Pet shop Booling</span>
+                                            <span>90%'ye varan Booling </span>
+                                            <button class="btn-new">Warning</button>
+                                        </div>
+                                    </div>
+                                    <img src="https://images.hepsiburada.net/banners/s/0/672-378/bannerImage2114_20210504174337.png">
+                                </div>
+
+                                <div class="swiper-slide minimum-height">
+                                    <div class="textBehindEachPhoto">
+                                        <!-- here -->
+                                        <div class="sf-Share-O5q7O">
+                                            <button type="button" class="sf-hb-button-3mxAT hb-button sf-Share-2YBgl" tabindex="0" data-hbus=""><span
+                                                    class="sf-hb-button-32HAC hb-button__content"><span
+                                                        class="sf-hb-button-1bEW5 hb-button__icon-container"><span
+                                                            class="sf-hb-button-2Bs_u sf-Share-2z71D hb-button__icon"></span></span></span></button>
+                                        </div>
+                                        <div class=" jumbotron text-center" style="padding-right:4px;padding-left:0;">
+                                            <span>Pet shop dolor</span>
+                                            <span>49%'ye varan Television</span>
+                                            <button class="btn-new">Warning</button>
+                                        </div>
+                                    </div>
+                                    <img src="https://images.hepsiburada.net/banners/s/0/672-378/bannerImage2151_20210505100001.png">
+                                </div>
+
+
+                            </div>
+                            <!-- Add Pagination -->
+                            <!-- <div class="swiper-pagination"></div> -->
+                            <!-- Add Pagination -->
+                            <!-- <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div> -->
+                        </div>
+
+                        <!-- Swiper thumbnails -->
+                        <div class="swiper-container gallery-thumbs3">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-button-prev btn-new"><i style='font-size:24px' class='fas'>&#xf060;</i>&nbsp;<span style="display:none">Menu 2 </span>
+                                </div>
+                                <div class="swiper-slide swiper-slide-thumbs">
+                                    <img src="https://images.hepsiburada.net/banners/s/0/672-378/bannerImage2114_20210504174337.png">
+                                </div>
+                                <div class="swiper-slide swiper-slide-thumbs">
+                                    <img src="https://images.hepsiburada.net/banners/s/0/672-378/bannerImage2151_20210505100001.png">
+                                </div>
+
+                                <div class="button-next">
+                                    <div class="swiper-slide swiper-slide-thumbs">
+                                        <!-- Empty -->
+                                    </div>
+                                    <button class="swiper-button-next btn-new">
+                                        <span style="display:none">Menu 4 </span>&nbsp;<i style='font-size:24px'
+                                            class='fas'>&#xf061;</i>
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- 4--------______________________________--------_____________________________-------_______________________________----- -->
+                <div id="menu4" class="tab-pane fade active">
+                    <div class="container2Info">
+
+                        <!-- Swiper -->
+                        <div class="swiper-container swiper-container-main4">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide minimum-height">
+                                    <div class="textBehindEachPhoto">
+                                        <!-- here -->
+                                        <div class="sf-Share-O5q7O">
+                                            <button type="button" class="sf-hb-button-3mxAT hb-button sf-Share-2YBgl" tabindex="0" data-hbus=""><span
+                                                    class="sf-hb-button-32HAC hb-button__content"><span
+                                                        class="sf-hb-button-1bEW5 hb-button__icon-container"><span
+                                                            class="sf-hb-button-2Bs_u sf-Share-2z71D hb-button__icon"></span></span></span></button>
+                                        </div>
+                                        <div class=" jumbotron text-center" style="padding-right:4px;padding-left:0;">
+                                            <span>Pet shop Booling</span>
+                                            <span>90%'ye varan Booling </span>
+                                            <button class="btn-new">Warning</button>
+                                        </div>
+                                    </div>
+                                    <img src="https://images.hepsiburada.net/banners/s/0/672-378/bannerImage2141_20210429134144.png">
+                                </div>
+                                <div class="swiper-slide minimum-height">
+                                    <div class="textBehindEachPhoto">
+                                        <!-- here -->
+                                        <div class="sf-Share-O5q7O">
+                                            <button type="button" class="sf-hb-button-3mxAT hb-button sf-Share-2YBgl" tabindex="0" data-hbus=""><span
+                                                    class="sf-hb-button-32HAC hb-button__content"><span
+                                                        class="sf-hb-button-1bEW5 hb-button__icon-container"><span
+                                                            class="sf-hb-button-2Bs_u sf-Share-2z71D hb-button__icon"></span></span></span></button>
+                                        </div>
+                                        <div class=" jumbotron text-center" style="padding-right:4px;padding-left:0;">
+                                            <span>Pet shop dolor</span>
+                                            <span>2%'ye varan indirimlerLorem ipsum dolor sit
+                                                amet </span>
+                                            <button class="btn-new">Warning</button>
+                                        </div>
+                                    </div>
+                                    <img src="https://images.hepsiburada.net/banners/s/0/672-378/bannerImage2096_20210503233940.png">
+                                </div>
+
+
+
+                            </div>
+                            <!-- Add Pagination -->
+                            <!-- <div class="swiper-pagination"></div> -->
+                            <!-- Add Pagination -->
+                            <!-- <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div> -->
+                        </div>
+
+                        <!-- Swiper thumbnails -->
+                        <div class="swiper-container gallery-thumbs4">
+                            <div class="swiper-wrapper">
+
+                                <div class="swiper-button-prev btn-new"><i style='font-size:24px' class='fas'>&#xf060;</i>&nbsp;<span style="display:none">Menu 3 </span>
+                                </div>
+                                <div class="swiper-slide swiper-slide-thumbs">
+                                    <img src="https://images.hepsiburada.net/banners/s/0/672-378/bannerImage2141_20210429134144.png">
+                                </div>
+                                <div class="swiper-slide swiper-slide-thumbs">
+                                    <img src="https://images.hepsiburada.net/banners/s/0/672-378/bannerImage2096_20210503233940.png">
+                                </div>
+
+
+                                <div class="button-next">
+                                    <div class="swiper-slide swiper-slide-thumbs">
+                                        <!-- Empty -->
+                                    </div>
+                                    <button class="swiper-button-next btn-new">
+                                        <i style='font-size:24px' class='fas'>&#xf061;</i>
+                                    </button>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+    <script>
+        var galleryThumbs1 = new Swiper('.gallery-thumbs1', {
+            spaceBetween: 10, //???????????????
+            slidesPerView: 10,
+            //prev for row photos
+            freeMode: true,
+            watchSlidesVisibility: true,
+            watchSlidesProgress: true,
+            loop: false, //for repeat rhoto in row photos
+            //autoHeight: true, //enable auto height
+            // Enable lazy loading
+            preloadImages: false,
+            lazy: true,
+            lazy: {
+                loadPrevNext: true,
+            },
+        });
+        var swiper1 = new Swiper('.swiper-container-main1', {
+            autoHeight: true, //enable auto height
+            mousewheel: {
+                invert: false,
+            },
+            //runCallbacksOnInit: true,
+            observer: true,
+            observeParents: true,
+            observeChildren: true,
+           spaceBetween: 1000,
+
+            pagination: {
+                el: '.swiper-pagination1',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            preloadImages: false,
+            // Enable lazy loading
+            lazy: true,
+            lazy: {
+                loadPrevNext: true,
+            },
+
+            keyboard: {
+                enabled: true,
+            },
+
+            // effect: 'fade',
+            //loop: true, nessesary
+            thumbs: {
+                swiper: galleryThumbs1
+            },
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false
+            },
+
+        });
+        var galleryThumbs2 = new Swiper('.gallery-thumbs2', {
+            spaceBetween: 10, //???????????????
+            slidesPerView: 10,
+            //prev for row photos
+            freeMode: true,
+            watchSlidesVisibility: true,
+            watchSlidesProgress: true,
+            loop: false, //for repeat rhoto in row photos
+            //autoHeight: true, //enable auto height
+            // Enable lazy loading
+            preloadImages: false,
+            lazy: true,
+            lazy: {
+                loadPrevNext: true,
+            },
+        });
+        var swiper2 = new Swiper('.swiper-container-main2', {
+            autoHeight: true, //enable auto height
+            mousewheel: {
+                invert: false,
+            },
+            //runCallbacksOnInit: true,
+            observer: true,
+            observeParents: true,
+            observeChildren: true,
+           spaceBetween: 1000,
+
+            pagination: {
+                el: '.swiper-pagination2',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            loop: true,
+            preloadImages: false,
+            // Enable lazy loading
+            lazy: true,
+            lazy: {
+                loadPrevNext: true,
+            },
+
+            keyboard: {
+                enabled: true,
+            },
+            // effect: 'fade',
+            // effect: 'coverflow',
+            // coverflowEffect: {
+            //     rotate: 360,
+            //     slideShadows: false,
+            // },
+            loop: true,
+            thumbs: {
+                swiper: galleryThumbs2
+            },
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false
+            },
+
+        });
+        var galleryThumbs3 = new Swiper('.gallery-thumbs3', {
+            spaceBetween: 10, //???????????????
+            slidesPerView: 10,
+            //prev for row photos
+            freeMode: true,
+            watchSlidesVisibility: true,
+            watchSlidesProgress: true,
+            loop: false, //for repeat rhoto in row photos
+            //autoHeight: true, //enable auto height
+            // Enable lazy loading
+            preloadImages: false,
+            lazy: true,
+            lazy: {
+                loadPrevNext: true,
+            },
+        });
+        var swiper3 = new Swiper('.swiper-container-main3', {
+            autoHeight: true, //enable auto height
+
+            //runCallbacksOnInit: true,
+            observer: true,
+            observeParents: true,
+            observeChildren: true,
+           spaceBetween: 1000,
+
+            pagination: {
+                el: '.swiper-pagination3',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            loop: true,
+            preloadImages: false,
+            // Enable lazy loading
+            lazy: true,
+            lazy: {
+                loadPrevNext: true,
+            },
+
+            keyboard: {
+                enabled: true,
+            },
+            // effect: 'fade',
+            // effect: 'coverflow',
+            // coverflowEffect: {
+
+            //     rotate: 360,
+            //     slideShadows: false,
+            // },
+            loop: true,
+            thumbs: {
+                swiper: galleryThumbs3
+            },
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false
+            },
+
+        });
+        var galleryThumbs4 = new Swiper('.gallery-thumbs4', {
+            spaceBetween: 10, //???????????????
+            slidesPerView: 10,
+            //prev for row photos
+            freeMode: true,
+            watchSlidesVisibility: true,
+            watchSlidesProgress: true,
+            loop: false, //for repeat rhoto in row photos
+            //autoHeight: true, //enable auto height
+            // Enable lazy loading
+            preloadImages: false,
+            lazy: true,
+            lazy: {
+                loadPrevNext: true,
+            },
+        });
+
+
+
+
+        var swiper4 = new Swiper('.swiper-container-main4', {
+            autoHeight: true, //enable auto height
+
+            //runCallbacksOnInit: true,
+            observer: true,
+            observeParents: true,
+            observeChildren: true,
+           spaceBetween: 1000,
+
+            pagination: {
+                el: '.swiper-pagination4',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            loop: true,
+            preloadImages: false,
+            // Enable lazy loading
+            lazy: true,
+            lazy: {
+                loadPrevNext: true,
+            },
+
+            keyboard: {
+                enabled: true,
+            },
+            // effect: 'fade',
+            // effect: 'coverflow',
+            // coverflowEffect: {
+            //     rotate: 360,
+            //     slideShadows: false,
+            // },
+            loop: true,
+            thumbs: {
+                swiper: galleryThumbs4
+            },
+
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false
+            },
+
+        });
+
+        // swiper - modal
+        // var swiperModal = new Swiper('.swiper-container-modal', {
+        //     observer: true,
+        //     observeParents: true,
+        //     observeChildren: true,
+        //     spaceBetween: 10,
+        //     navigation: {
+        //         nextEl: '.swiper-button-next',
+        //         prevEl: '.swiper-button-prev',
+        //     },zoom: {
+        //         maxRatio: 2,
+        //         toggle: true, // enable zoom-in by double tapping slide
+        //     },
+        //     
+        //     loop: true,
+        //     preloadImages: false,
+        //     // Enable lazy loading
+        //     lazy: true,
+        //     lazy: {
+        //         loadPrevNext: true,
+        //         //loadOnTransitionStart: true,
+        //     },
+
+
+        //     effect: 'coverflow',
+        //     coverflowEffect: {
+        //         rotate: 60,
+        //         slideShadows: false,
+        //         stretch: 0,
+        //         depth: 30,
+        //         modifier: 1,
+
+        //     },
+        //     loop: true,
+
+
+        // });
+        // Random Color
+
+        window.setInterval(function() {
+
+            var randomColor = '#' + ('000000' + Math.floor(Math.random() * 76777215).toString(16)).slice(-
+                6);
+            // $('.container1Info1').css({
+            //     'background-image': `linear-gradient(180deg, randomColor 0%, rgb(222 171 171) 140%)`,
+            // });
+
+            $('.textBehindEachPhoto .jumbotron .btn-new').css({
+                'background-color': randomColor,
+            });
+            $(".textBehindEachPhoto .jumbotron span:first-child").css({
+                'color': randomColor,
+            });
+
+
+        }, 4720);
+
+
+
+        $(document).ready(function() {
+            ////////////////////////////////////////////////////////////BUTTON Next///////////////////////////////////////////////////////////////
+
+            //for hide button prev  in interface 1
+            $("#menu1 .swiper-slide:nth-child(2)").click(
+                function() { //for fade the button prev on click
+                    $("#menu1 .swiper-button-prev").fadeOut();
+                });
+            $("#menu1 .swiper-slide:not(:nth-child(2))").click(
+                function() { //for fade the button prev on click
+                    $("#menu1 .swiper-button-prev").fadeIn();
+                });
+            //for Show Next interface inside Button Next1
+            $("#menu1 .swiper-slide:nth-last-child(2)").click(function() {
+
+                $("#menu1 .swiper-button-next span").fadeIn();
+            });
+            $("#menu1 .swiper-slide:not(:nth-last-child(2))").click(function() {
+
+                $("#menu1 .swiper-button-next span").fadeOut();
+            });
+            //for Show Next interface inside Button Next2
+            $("#menu2 .swiper-slide:nth-last-child(2)").click(function() {
+
+                $("#menu2  .swiper-button-next span").fadeIn();
+            });
+            $("#menu2 .swiper-slide:not(:nth-last-child(2))").click(function() {
+
+                $("#menu2  .swiper-button-next span").fadeOut();
+            });
+            //for Show Next interface inside Button Next3
+            $("#menu3 .swiper-slide:nth-last-child(2)").click(function() {
+
+                $("#menu3 .swiper-button-next span").fadeIn();
+            });
+            $("#menu3 .swiper-slide:not(:nth-last-child(2))").click(function() {
+
+                $("#menu3 .swiper-button-next span").fadeOut();
+            });
+            //for Show Next interface inside Button Next4
+            $("#menu4 .swiper-slide:nth-last-child(2)").click(
+                function() {
+                    $("#menu4 .swiper-button-next").fadeOut();
+                });
+            $("#menu4 .swiper-slide:not(:nth-last-child(2))").click(
+                function() {
+                    $("#menu4 .swiper-button-next").fadeIn();
+                });
+
+            ///test///style="width: 1066px; transition-duration: 300ms; transform: translate3d(0px, 0px, -200px) rotateX(0deg) rotateY(720deg) scale(1); z-index: -1;"
+
+
+
+
+
+            ////////////////////////////////////////////////////////////BUTTON PREV///////////////////////////////////////////////////////////////
+            //for Show prev interface inside Button prev1
+            $("#menu1 .swiper-slide:nth-child(2)").click(function() {
+
+                $("#menu1 .swiper-button-prev span").fadeIn();
+            });
+            $("#menu1 .swiper-slide:not(:nth-child(2))").click(function() {
+
+                $("#menu1 .swiper-button-prev span").fadeOut();
+            });
+            //for Show prev interface inside Button prev2
+            $("#menu2 .swiper-slide:nth-child(2)").click(function() {
+
+                $("#menu2  .swiper-button-prev span").fadeIn();
+            });
+            $("#menu2 .swiper-slide:not(:nth-child(2))").click(function() {
+
+                $("#menu2  .swiper-button-prev span").fadeOut();
+            });
+            //for Show prev interface inside Button prev3
+            $("#menu3 .swiper-slide:nth-child(2)").click(function() {
+
+                $("#menu3 .swiper-button-prev span").fadeIn();
+            });
+            $("#menu3 .swiper-slide:not(:nth-child(2))").click(function() {
+
+                $("#menu3 .swiper-button-prev span").fadeOut();
+            });
+            //for Show prev interface inside Button prev4
+            $("#menu4 .swiper-slide:nth-child(2)").click(
+                function() {
+                    $("#menu4 .swiper-button-prev span").css({
+                        "display": "block"
+                    });
+                });
+            $("#menu4 .swiper-slide:not(:nth-child(2))").click(
+                function() {
+                    $("#menu4 .swiper-button-prev span").css({
+                        "display": "none"
+                    });
+                });
+
+            //Icon--------------------------------------------------------------------------------------------------
+            $("li:nth-child(1) .svg-inline--fa.fa-w-10").fadeIn();
+            $("ul.nav-pills li").on("click", function() {
+                $(this).addClass("show-icon").siblings().removeClass("show-icon");
+
+                if ($("ul.nav-pills li:nth-child(1)").hasClass("show-icon")) {
+                    $("#main").prop("class", "container1Info1"); //for background Image
+                    $("li:nth-child(1) .svg-inline--fa.fa-w-10").fadeIn();
+                    $("li:not(:nth-child(1)) .svg-inline--fa.fa-w-10").fadeOut(10);
+                };
+                if ($("ul.nav-pills li:nth-child(2)").hasClass("show-icon")) {
+                    $("#main").prop("class", "container1Info2"); //for background Image
+
+                    $("li:nth-child(2) .svg-inline--fa.fa-w-10").fadeIn();
+                    $("li:not(:nth-child(2)) .svg-inline--fa.fa-w-10").fadeOut(10);
+                };
+                if ($("ul.nav-pills li:nth-child(3)").hasClass("show-icon")) {
+
+                    $("#main").prop("class", "container1Info3"); //for background Image
+                    $("li:nth-child(3) .svg-inline--fa.fa-w-10").fadeIn();
+                    $("li:not(:nth-child(3)) .svg-inline--fa.fa-w-10").fadeOut(10);
+                };
+                if ($("ul.nav-pills li:nth-child(4)").hasClass("show-icon")) {
+                    $("#main").prop("class", "container1Info4"); //for background Image
+
+                    $("li:nth-child(4) .svg-inline--fa.fa-w-10").fadeIn();
+                    $("li:not(:nth-child(4)) .svg-inline--fa.fa-w-10").fadeOut(10);
+                };
+
+            });
+
+
+
+        });
+    </script>
+</body>
+
+</html>
+<!-- 
+
+    {{--  swiper paralex  --}}
+ var swiper1 = new Swiper('.swiper333', {
+              parallax: true,}//first
+<div class="swiper333">  //secound
+  // Parallax background element 
+  <div
+  class="parallax-bg"
+  style="background-image:url(path/to/image.jpg)"
+  data-swiper-parallax="-23%"
+></div>
+<div class="swiper-wrapper">
+  <div class="swiper-slide">
+    Each slide has parallax title
+    <div class="title" data-swiper-parallax="-100">Slide 1</div>
+     Parallax subtitle
+    <div class="subtitle" data-swiper-parallax="-200">Subtitle</div>
+    And parallax text with custom transition duration
+    <div
+      class="text"
+      data-swiper-parallax="-300"
+      data-swiper-parallax-duration="600"
+    >
+      <p>Lorem ipsum dolor sit amet, ...</p>
+    </div>
+     Opacity parallax 
+    <div data-swiper-parallax-opacity="0.5">I will change opacity</div>
+     Scale parallax
+    <div data-swiper-parallax-scale="0.15">I will change scale</div>
+  </div>
+  ...
+</div>
+</div>
+ -->

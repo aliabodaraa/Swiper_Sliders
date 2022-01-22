@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Swiper demo</title>
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+    <!-- Demo styles -->
+    <style>
+        html,
+        body {
+            position: relative;
+            height: 100%;
+            /* -webkit-font-smoothing: antialiased; */
+        }
+        
+        body {
+            background: #eee;
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            color: #000;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .swiper-container {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+            /* Center slide text vertically */
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+        }
+        
+        .swiper-slide img {
+            display: block;
+            width: auto;
+            height: auto;
+            background-size: cover;
+        }
+        
+        .swiper-container {
+            width: auto;
+            height: auto;
+            margin: 20px auto;
+            margin-top: 0;
+        }
+        
+        .swiper-container-3d {
+            perspective: 991456px;
+        }
+        /* .swiper-container {
+    width: 138%;
+    height: 470px;
+    margin: 0px auto;
+} */
+        
+        .append-buttons {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .append-buttons button {
+            display: inline-block;
+            cursor: pointer;
+            border: 1px solid #007aff;
+            color: #007aff;
+            text-decoration: none;
+            padding: 4px 10px;
+            border-radius: 4px;
+            margin: 0 10px;
+            font-size: 13px;
+        }
+        /* button */
+        
+        .buttonEffect {
+            position: relative;
+            /* background-color: #04AA6D; */
+            border: none;
+            font-size: 28px;
+            color: #FFFFFF;
+            padding: 20px;
+            width: 200px;
+            text-align: center;
+            -webkit-transition-duration: 0.4s;
+            /* Safari */
+            transition-duration: 0.4s;
+            text-decoration: none;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .buttonEffect:hover {
+            background-color: #349;
+        }
+        
+        .buttonEffect:after {
+            content: "";
+            background: #fdfffd;
+            display: block;
+            position: absolute;
+            padding-top: 300%;
+            padding-left: 350%;
+            margin-left: -20px !important;
+            margin-top: -120%;
+            opacity: 0;
+            transition: all 3s
+        }
+        
+        .buttonEffect:active:after {
+            padding: 0;
+            margin: 0;
+            opacity: 1;
+            transition: 0s
+        }
+        /* button next&&previous */
+        
+        .swiper-button-next,
+        .swiper-button-prev {
+            display: inline-block;
+            padding: 5px 10px;
+            padding-left: 17px;
+        }
+        
+        .swiper-button-next:hover,
+        .swiper-button-prev:hover {
+            background-color: #349;
+            /* color: black; */
+        }
+        /* .previous {
+            background-color: #f1f1f1;
+            color: black;
+        } */
+        
+        .next {
+            color: #FFFFFF;
+            border: 3px solid #FFFFFF;
+        }
+        
+        .round {
+            border-radius: 24%;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Swiper -->
+
+    <div #swiperRef="" class="swiper-container mySwiper">
+        <div class="swiper-wrapper"></div>
+        <div class="swiper-button-next next round"></div>
+        <div class="swiper-button-prev next round"></div>
+        <div class="swiper-pagination"></div>
+
+        <div class="swiper-scrollbar"></div>
+    </div>
+
+    <p class="append-buttons">
+        <button class="prepend-2-slides buttonEffect">Prepend 2 Slides</button>
+        <button class="slide-1 buttonEffect">Slide 1</button>
+        <button class="slide-250 buttonEffect">Slide 250</button>
+        <button class="slide-500 buttonEffect">Slide 500</button>
+        <button class="append-slide buttonEffect">Append Slide</button>
+    </p>
+    </div>
+
+    </div>
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 2,
+
+            //prev for Perspective
+            centeredSlides: true,
+            //prev for centeres Slide
+            spaceBetween: 200,
+            //prev for size between image
+            effect: 'coverflow',
+            // mousewheelControl: true,for mouse control
+            coverflowEffect: {
+                rotate: 90,
+                slideShadows: false,
+            },
+            // effect: 'fade',
+            // fadeEffect: {
+            //     crossFade: true
+            // },
+            keyboard: {
+                enabled: true,
+            },
+            autoplay: {
+                delay: 1500,
+                disableOnInteraction: false
+            },
+            preloadImages: true,
+            scrollbar: {
+                el: '.swiper-scrollbar',
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                type: "fraction", //fade o add number/number
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+
+            watchSlidesProgress: true,
+            //swiper-slide swiper-slide-active
+            virtual: {
+                slides: (function() {
+                    // Random Color
+                    var slides = [];
+                    var randomColor;
+                    for (var i = 0; i < 6000; i += 1) {
+                        randomColor = ('000000' + Math.floor(Math.random() * 76777215)
+                            .toString(16)).slice(-6);
+                        //slides.push("Slide " + (i + 1));
+                        slides.push(
+                            '<img src=http://placehold.it/1000x500/' + randomColor + '/' +
+                            '#8a0' + 'alt=Image>'
+                        );
+                    }
+                    return slides;
+
+                })(),
+            },
+        });
+
+        var randomColor2;
+        var randomColor3;
+        var randomColor4;
+        var appendNumber = 600;
+        var prependNumber = 1;
+        document
+            .querySelector(".slide-1")
+            .addEventListener("click", function(e) {
+                e.preventDefault();
+                swiper.slideTo(0, 0);
+            });
+        document
+            .querySelector(".slide-250")
+            .addEventListener("click", function(e) {
+                e.preventDefault();
+                swiper.slideTo(249, 0);
+            });
+        document
+            .querySelector(".slide-500")
+            .addEventListener("click", function(e) {
+                e.preventDefault();
+                swiper.slideTo(499, 0);
+            });
+        document
+            .querySelector(".prepend-2-slides")
+            .addEventListener("click", function(e) {
+                e.preventDefault();
+                // swiper.virtual.appendSlide("Slide " + --appendNumber, "Slide " + --prependNumber,);
+                randomColor2 = ('000000' + Math.floor(Math.random() * 76777215)
+                    .toString(16)).slice(-6);
+                randomColor3 = ('000000' + Math.floor(Math.random() * 76777215)
+                    .toString(16)).slice(-6);
+                swiper.virtual.prependSlide([
+                    '<img src=http://placehold.it/343x300/' + randomColor2 + '/' +
+                    '#8a0' + 'alt=Image>',
+                    '<img src=http://placehold.it/343x300/' + randomColor3 + '/' +
+                    '#8a0' + 'alt=Image>',
+                ]);
+            });
+        document
+            .querySelector(".append-slide")
+            .addEventListener("click", function(e) {
+                e.preventDefault();
+                // swiper.virtual.appendSlide("Slide " + ++appendNumber);
+                randomColor4 = ('000000' + Math.floor(Math.random() * 76777215)
+                    .toString(16)).slice(-6);
+                swiper.virtual.appendSlide(
+                    '<img src=http://placehold.it/343x300/' + randomColor4 + '/' +
+                    '#8a0' + 'alt=Image>');
+            });
+    </script>
+</body>
+
+</html>
